@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#10100e">
+	<title>Booyah Board — Classement Free Fire</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="table.css">
+	<script src="table.js" defer></script>
+</head>
+<body>
+	<div class="glow glow-left" aria-hidden="true"></div>
+	<div class="glow glow-right" aria-hidden="true"></div>
+	<main class="shell">
+		<header class="topbar">
+			<a class="brand" href="#" aria-label="Booyah Board accueil"><span class="brand-icon">B<span>!</span></span><span>BOOYAH<span class="brand-light">BOARD</span></span></a>
+			<span class="tournament-label"><span class="live-dot"></span> FREE FIRE · TOURNOI</span>
+			<button class="reset-button" id="resetTournament" type="button" title="Réinitialiser le tournoi"><span aria-hidden="true">↻</span> Réinitialiser</button>
+		</header>
+
+		<section class="intro">
+			<div class="eyebrow"><span></span> TOURNOI / CLASSEMENT</div>
+			<h1>LA ROUTE VERS LE <em>BOOYAH.</em></h1>
+			<p>Suivez les performances de chaque équipe, match après match.</p>
+		</section>
+
+		<section class="toolbar" aria-label="Paramètres du tournoi">
+			<div class="toolbar-group">
+				<label for="teamCount">ÉQUIPES</label>
+				<select id="teamCount" aria-label="Nombre d'équipes"><option value="12">12 équipes</option><option value="15">15 équipes</option></select>
+			</div>
+			<span class="toolbar-divider"></span>
+			<div class="toolbar-group match-picker">
+				<label for="matchSelect">MATCH AFFICHÉ</label>
+				<select id="matchSelect" aria-label="Choisir le match"></select>
+			</div>
+			<button class="add-match" id="addMatch" type="button"><span>+</span> Nouveau match</button>
+		</section>
+
+		<section class="stats-row" aria-label="Résumé du tournoi">
+			<article class="stat-card"><span class="stat-icon icon-orange">◉</span><div><span class="stat-label">MATCH EN COURS</span><strong id="currentMatchStat">MATCH 01</strong></div></article>
+			<article class="stat-card"><span class="stat-icon icon-yellow">♙</span><div><span class="stat-label">ÉQUIPES INSCRITES</span><strong id="teamStat">12 <small>ÉQUIPES</small></strong></div></article>
+			<article class="stat-card"><span class="stat-icon icon-green">⚡</span><div><span class="stat-label">ÉLIMINATIONS CE MATCH</span><strong id="killStat">0 <small>KILLS</small></strong></div></article>
+			<article class="stat-card"><span class="stat-icon icon-blue">★</span><div><span class="stat-label">MEILLEURE ÉQUIPE</span><strong class="leader-stat" id="leaderStat">—</strong></div></article>
+		</section>
+
+		<section class="table-panel" aria-labelledby="matchHeading">
+			<div class="panel-heading">
+				<div><span class="section-kicker">RÉSULTATS EN DIRECT</span><h2 id="matchHeading">Classement du match</h2></div>
+				<div class="sort-note"><span>↕</span> Trié par points</div>
+			</div>
+			<div class="table-scroll">
+				<table class="score-table">
+					<thead><tr><th class="rank-col">#</th><th>ÉQUIPE</th><th class="center-col">PLACE</th><th class="center-col">KILLS</th><th class="points-col">PTS PLACE</th><th class="total-col">TOTAL</th></tr></thead>
+					<tbody id="matchRows"></tbody>
+				</table>
+			</div>
+			<div class="table-foot"><span>Points de placement + 1 point par élimination</span><span id="matchFoot">MATCH 01 · 12 ÉQUIPES</span></div>
+		</section>
+		<input id="logoUpload" class="visually-hidden" type="file" accept="image/*" aria-label="Choisir le logo d'une équipe">
+
+		<section class="bottom-grid">
+			<article class="standings-panel" aria-labelledby="standingsHeading">
+				<div class="panel-heading compact-heading"><div><span class="section-kicker">CUMUL GLOBAL</span><h2 id="standingsHeading">Classement du tournoi</h2></div><span class="trophy">♛</span></div>
+				<div class="standings-list" id="standingsRows"></div>
+			</article>
+			<aside class="points-panel" aria-labelledby="pointsHeading">
+				<span class="section-kicker">BARÈME DE POINTS</span><h2 id="pointsHeading">Chaque place compte.</h2>
+				<p>Points attribués selon le placement final. Chaque kill rapporte aussi <strong>1 point.</strong></p>
+				<div class="placement-points" id="placementPoints"></div>
+				<div class="points-legend"><span><i class="legend-place"></i>Placement</span><span><i class="legend-kill"></i>1 point / kill</span></div>
+			</aside>
+		</section>
+
+		<footer><span>BOOYAH BOARD <b>·</b> FREE FIRE ESPORT</span><span>Progression sauvegardée automatiquement sur cet appareil.</span></footer>
+	</main>
+</body>
+</html>
